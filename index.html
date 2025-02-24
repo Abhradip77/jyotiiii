@@ -1,54 +1,40 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const quizData = [
-        { question: "When did we go official?", options: ["19 Sep", "18 Sep", "15 Sep", "16 Sep"], answer: 0 },
-        { question: "Our fav spot?", options: ["Si Nonnas", "Dailys", "High Garden", "Pop Tates"], answer: 3 },
-        { question: "My birth sign?", options: ["Capricorn", "Sagittarius", "Scorpio", "Cancer"], answer: 2 },
-        { question: "My favourite team?", options: ["United", "Real Madrid", "Atletico Madrid", "Athletic Club"], answer: 1 },
-        { question: "My fav top of yours?", options: ["Black Kissi one", "Pink one", "Yellow flower top", "White and pink kurta top"], answer: 3 }
-    ];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prom Proposal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Promise Page -->
+    <div id="promise-page" class="page">
+        <p>This is gonna be fun but promise me to stay grounded hehe</p>
+        <button onclick="goToQuiz()">Promise</button>
+    </div>
 
-    let currentQuestion = 0;
-    const quizContainer = document.getElementById("quiz-container");
-    const nextButton = document.getElementById("next-button");
+    <!-- Quiz Page -->
+    <div id="quiz-page" class="page hidden">
+        <p>Answer these questions!</p>
+        <div id="quiz-container"></div>
+        <p class="hint-text">It's hard to challenge you at times huh</p>
+        <button id="next-button" class="hidden" onclick="goToProposal()">Next</button>
+    </div>
 
-    function loadQuestion() {
-        quizContainer.innerHTML = "";
-        const data = quizData[currentQuestion];
-        const questionElement = document.createElement("p");
-        questionElement.textContent = data.question;
-        quizContainer.appendChild(questionElement);
+    <!-- Proposal Page -->
+    <div id="proposal-page" class="page hidden">
+        <img src="cat.gif" alt="Cute Cat" class="cat-gif">
+        <p class="proposal-text">Will you be my prom date? 💖</p>
+        <div class="buttons">
+            <button class="yes-button">Yes</button>
+            <button class="no-button">No</button>
+        </div>
+    </div>
 
-        data.options.forEach((option, index) => {
-            const button = document.createElement("button");
-            button.textContent = option;
-            button.onclick = function() {
-                if (index === data.answer) {
-                    button.style.backgroundColor = "green";
-                    currentQuestion++;
-                    if (currentQuestion < quizData.length) {
-                        setTimeout(loadQuestion, 1000);
-                    } else {
-                        nextButton.classList.remove("hidden");
-                    }
-                } else {
-                    button.style.backgroundColor = "red";
-                }
-            };
-            quizContainer.appendChild(button);
-        });
-    }
+    <audio autoplay loop>
+        <source src="every_breath_you_take.mp3" type="audio/mpeg">
+    </audio>
 
-    function goToQuiz() {
-        document.getElementById("promise-page").classList.add("hidden");
-        document.getElementById("quiz-page").classList.remove("hidden");
-        loadQuestion();
-    }
-
-    function goToProposal() {
-        document.getElementById("quiz-page").classList.add("hidden");
-        document.getElementById("proposal-page").classList.remove("hidden");
-    }
-
-    window.goToQuiz = goToQuiz;
-    window.goToProposal = goToProposal;
-});
+    <script src="script.js"></script>
+</body>
+</html>
