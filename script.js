@@ -1,65 +1,78 @@
-body {
-    font-family: 'Sacramento', cursive;
-    text-align: center;
-    margin: 0;
-    background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+// Function to handle button clicks
+function selectOption(option) {
+    if (option === 'yes') {
+        flashRainbowColors(() => {
+            document.getElementById('question').style.display = 'none';
+            displayCatHeart();
+            showBackgroundImage();
+        });
+    } else if (option === 'no') {
+        document.getElementById('no-button').innerText = 'You sure?';
+        let yesButton = document.getElementById('yes-button');
+        let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+        yesButton.style.fontSize = (currentSize * 1.5) + 'px';
+    }
 }
 
-#container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+// Flashing rainbow background effect
+function flashRainbowColors(callback) {
+    let colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
+    let i = 0;
+    let interval = setInterval(() => {
+        document.body.style.backgroundColor = colors[i];
+        i = (i + 1) % colors.length;
+    }, 200);
+    setTimeout(() => {
+        clearInterval(interval);
+        document.body.style.backgroundColor = '#ffe6f2'; // Reset
+        if (callback) callback();
+    }, 2000);
 }
 
-/* Reduce image size by 80% */
-#image-container img {
-    width: 20%; /* 80% reduction */
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
+// Display cat.gif initially
+function displayCat() {
+    let imgElement = document.getElementById('main-image');
+    imgElement.src = 'cat.gif';
 }
 
-/* Increase font size by 50% */
-#question {
-    font-size: 48px; /* Increased from 32px */
-    font-weight: bold;
-    color: #d81b60;
-    margin-bottom: 15px;
+// Change image to cat-heart.gif when "Yes" is clicked
+function displayCatHeart() {
+    let imgElement = document.getElementById('main-image');
+    imgElement.src = 'cat-heart.gif';
+    document.getElementById('options').style.display = 'none';
 }
 
-#options button {
-    font-size: 36px; /* Increased from 24px */
-    padding: 15px 30px;
-    margin: 10px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+// Show background image with fade-in effect
+function showBackgroundImage() {
+    let bgImage = document.getElementById('background-image');
+    bgImage.style.opacity = '0.3'; // Set transparency to 30%
 }
 
-#yes-button {
-    background-color: #ff4081;
-    color: white;
+// Countdown Timer
+function startCountdown() {
+    let countdownElement = document.getElementById('countdown');
+    let targetDate = new Date('February 28, 2025 15:30:00').getTime();
+
+    function updateCountdown() {
+        let now = new Date().getTime();
+        let timeLeft = targetDate - now;
+
+        if (timeLeft > 0) {
+            let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            countdownElement.innerHTML = `⏳ Time Left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        } else {
+            countdownElement.innerHTML = "🎉 It's Prom Time! 🎉";
+        }
+    }
+
+    setInterval(updateCountdown, 1000);
 }
 
-#no-button {
-    background-color: #f8bbd0;
-    color: black;
-}
-
-#options button:hover {
-    transform: scale(1.1);
-}
-
-/* Countdown Timer */
-#countdown {
-    font-size: 33px; /* Increased from 22px */
-    color: #d81b60;
-    margin-top: 20px;
-}
+// Run functions on page load
+document.addEventListener('DOMContentLoaded', () => {
+    displayCat();
+    startCountdown();
+});
