@@ -8,36 +8,28 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
 
     let currentQuestion = 0;
-    const quizContainer = document.getElementById("quiz-container");
+    const quizContainer = document.getElementById("quiz-options");
+    const questionElement = document.getElementById("quiz-question");
     const nextButton = document.getElementById("next-button");
-    const bgMusic = document.getElementById("bg-music");
 
     function loadQuestion() {
         quizContainer.innerHTML = "";
-        const data = quizData[currentQuestion];
-        const questionElement = document.createElement("p");
-        questionElement.textContent = data.question;
-        quizContainer.appendChild(questionElement);
+        questionElement.textContent = quizData[currentQuestion].question;
 
-        data.options.forEach((option, index) => {
+        quizData[currentQuestion].options.forEach((option, index) => {
             const button = document.createElement("button");
             button.textContent = option;
             button.onclick = function() {
-                if (index === data.answer) {
+                if (index === quizData[currentQuestion].answer) {
                     button.style.backgroundColor = "green";
-                    setTimeout(() => {
-                        currentQuestion++;
-                        if (currentQuestion < quizData.length) {
-                            loadQuestion();
-                        } else {
-                            nextButton.classList.remove("hidden");
-                        }
-                    }, 1000);
+                    currentQuestion++;
+                    if (currentQuestion < quizData.length) {
+                        setTimeout(loadQuestion, 1000);
+                    } else {
+                        nextButton.classList.remove("hidden");
+                    }
                 } else {
                     button.style.backgroundColor = "red";
-                    setTimeout(() => {
-                        button.style.backgroundColor = "";
-                    }, 1000);
                 }
             };
             quizContainer.appendChild(button);
@@ -48,22 +40,22 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("promise-page").classList.add("hidden");
         document.getElementById("quiz-page").classList.remove("hidden");
         loadQuestion();
-        bgMusic.play(); // Ensure music continues
     }
 
     function goToProposal() {
         document.getElementById("quiz-page").classList.add("hidden");
         document.getElementById("proposal-page").classList.remove("hidden");
-        bgMusic.play(); // Ensure music plays on proposal page
     }
 
-    function acceptProposal() {
-        document.getElementById("proposal-bg").classList.add("proposal-accepted");
-        document.body.classList.add("flash");
-        document.getElementById("cat-img").src = "cat-heart.gif";
+    function showYes() {
+        document.getElementById("gif").classList.remove("hidden");
+
+        // Add rainbow flash effect
+        document.getElementById("proposal-page").style.animation = "rainbowFlash 1s infinite alternate";
     }
 
+    // Attach functions to global scope
     window.goToQuiz = goToQuiz;
     window.goToProposal = goToProposal;
-    window.acceptProposal = acceptProposal;
+    window.showYes = showYes;
 });
