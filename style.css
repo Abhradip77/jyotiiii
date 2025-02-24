@@ -1,0 +1,60 @@
+/* Full-page styling */
+body {
+    background: linear-gradient(to bottom, #fce4ec, #f8bbd0); /* Soft pink gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Sacramento', cursive;
+    text-align: center;
+}
+
+/* Container */
+#
+       width: 250px; /* Adjust the image width */
+    height: auto;
+    border-radius: 15px; /* Rounded corners for a softer look */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+/* Question text */
+#question {
+    font-size: 32px;
+    font-weight: bold;
+    color: #d81b60; /* Cute pinkish-red */
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+#options button {
+    font-size: 24px;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+#yes-button {
+    background-color: #ff4081;
+    color: white;
+}
+
+#no-button {
+    background-color: #f8bbd0;
+    color: black;
+}
+
+#options button:hover {
+    transform: scale(1.1);
+}
+
+/* Countdown Timer */
+#countdown {
+    font-size: 22px;
+    color: #d81b60;
+    margin-top: 20px;
+}
