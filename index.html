@@ -7,25 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <!-- Promise Page -->
-    <div id="promise-page" class="page">
-        <p>This is gonna be fun, but promise me to stay grounded hehe</p>
+    <div id="promise-page">
+        <h1>This is gonna be fun but promise me to stay grounded hehe</h1>
         <button onclick="goToQuiz()">Promise</button>
     </div>
 
     <!-- Quiz Page -->
-    <div id="quiz-page" class="page hidden">
+    <div id="quiz-page" class="hidden">
+        <h1>Answer these to proceed</h1>
         <p id="quiz-question"></p>
         <div id="quiz-options"></div>
+        <p class="hint">"It's hard to challenge you at times huh"</p>
         <button id="next-button" class="hidden" onclick="goToProposal()">Next</button>
     </div>
 
     <!-- Proposal Page -->
-    <div id="proposal-page" class="page hidden">
-        <p>Will you be my prom date? 💖</p>
+    <div id="proposal-page" class="hidden">
+        <img src="cat.gif" id="gif" alt="Cat GIF">
+        <h1>Will you be my prom date? 💖</h1>
         <button onclick="showYes()">Yes</button>
-        <button onclick="showNo()">No</button>
-        <img id="gif" class="hidden" src="cat-heart.gif">
+        <button>No</button>
+        <img src="our-pic.jpg" id="bg-pic" alt="Us Together">
     </div>
 
     <script src="script.js"></script>
