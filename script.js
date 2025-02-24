@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentQuestion = 0;
     const quizContainer = document.getElementById("quiz-container");
     const nextButton = document.getElementById("next-button");
+    const bgMusic = document.getElementById("bg-music");
 
     function loadQuestion() {
         quizContainer.innerHTML = "";
@@ -35,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 } else {
                     button.style.backgroundColor = "red";
                     setTimeout(() => {
-                        button.style.backgroundColor = ""; // Reset color after a wrong attempt
+                        button.style.backgroundColor = "";
                     }, 1000);
                 }
             };
@@ -47,13 +48,22 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("promise-page").classList.add("hidden");
         document.getElementById("quiz-page").classList.remove("hidden");
         loadQuestion();
+        bgMusic.play(); // Ensure music continues
     }
 
     function goToProposal() {
         document.getElementById("quiz-page").classList.add("hidden");
         document.getElementById("proposal-page").classList.remove("hidden");
+        bgMusic.play(); // Restart music if stopped
+    }
+
+    function acceptProposal() {
+        document.getElementById("proposal-bg").classList.add("proposal-accepted");
+        document.body.classList.add("flash");
+        document.getElementById("cat-img").src = "cat_heart.gif";
     }
 
     window.goToQuiz = goToQuiz;
     window.goToProposal = goToProposal;
+    window.acceptProposal = acceptProposal;
 });
