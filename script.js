@@ -1,60 +1,65 @@
-// Function to handle button click events
-function selectOption(option) {
-    if (option === 'yes') {
-        flashRainbowColors(function() {
-            document.getElementById('question').style.display = 'none';
-            displayCatHeart();
-        });
-    } else if (option === 'no') {
-        document.getElementById('no-button').innerText = 'You sure?';
-        let yesButton = document.getElementById('yes-button');
-        let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-        yesButton.style.fontSize = (currentSize * 1.5) + 'px'; // 50% increase
-    }
+body {
+    font-family: 'Sacramento', cursive;
+    text-align: center;
+    margin: 0;
+    background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-// Function to flash rainbow colors
-function flashRainbowColors(callback) {
-    let colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
-    let i = 0;
-    let interval = setInterval(function() {
-        document.body.style.backgroundColor = colors[i];
-        i = (i + 1) % colors.length;
-    }, 200);
-
-    setTimeout(function() {
-        clearInterval(interval);
-        document.body.style.backgroundColor = '';
-        if (callback) callback();
-    }, 2000);
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-// Function to display the cat-heart.gif
-function displayCatHeart() {
-    document.getElementById('image-container').innerHTML = '<img src="cat-heart.gif" alt="Cat Heart">';
-    document.getElementById('options').style.display = 'none';
+/* Reduce image size by 80% */
+#image-container img {
+    width: 20%; /* 80% reduction */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
 }
 
-// Countdown Timer for Feb 28, 2025, at 3:30 PM
-function updateCountdown() {
-    let eventDate = new Date('February 28, 2025 15:30:00').getTime();
-    let timer = setInterval(function() {
-        let now = new Date().getTime();
-        let distance = eventDate - now;
-
-        if (distance < 0) {
-            clearInterval(timer);
-            document.getElementById('countdown').innerText = "It's Time!";
-            return;
-        }
-
-        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById('countdown').innerText = `${days} days ${hours}h ${minutes}m ${seconds}s left`;
-    }, 1000);
+/* Increase font size by 50% */
+#question {
+    font-size: 48px; /* Increased from 32px */
+    font-weight: bold;
+    color: #d81b60;
+    margin-bottom: 15px;
 }
 
-updateCountdown();
+#options button {
+    font-size: 36px; /* Increased from 24px */
+    padding: 15px 30px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+#yes-button {
+    background-color: #ff4081;
+    color: white;
+}
+
+#no-button {
+    background-color: #f8bbd0;
+    color: black;
+}
+
+#options button:hover {
+    transform: scale(1.1);
+}
+
+/* Countdown Timer */
+#countdown {
+    font-size: 33px; /* Increased from 22px */
+    color: #d81b60;
+    margin-top: 20px;
+}
