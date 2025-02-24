@@ -3,27 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Prom Date?</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <title>Let's Begin</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="background-image"></div> <!-- Background image that appears on "Yes" -->
-    
-    <div id="container">
-        <div id="image-container">
-            <img id="main-image" src="cat.gif" alt="Cute Cat">
-        </div>
-        <div id="text-container">
-            <div id="question">Will you be my prom date? 💖</div>
-            <div id="options">
-                <button id="yes-button" onclick="selectOption('yes')">Yes</button>
-                <button id="no-button" onclick="selectOption('no')">No</button>
-            </div>
-        </div>
-        <div id="countdown"></div>
+    <div id="background-image" class="bg-image"></div> <!-- Background Image -->
+    <div id="intro-container">
+        <h1>This is gonna be fun, but promise me to stay grounded hehe</h1>
+        <button onclick="nextPage('mcq.html')">Promise</button>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
