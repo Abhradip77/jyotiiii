@@ -6,6 +6,7 @@ body {
     padding: 0;
 }
 
+/* General styling for all pages */
 .page {
     display: flex;
     flex-direction: column;
@@ -13,15 +14,60 @@ body {
     align-items: center;
     height: 100vh;
     position: relative;
+    overflow: hidden;
+    width: 100%;
 }
 
+/* Hide inactive pages */
 .hidden {
     display: none;
 }
 
+/* Background styling for Promise Page */
+#promise-page {
+    background: url('our-pic-2.jpg') no-repeat center center/cover;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Background overlay to ensure text visibility */
+#promise-page .bg-overlay {
+    background-color: rgba(255, 255, 255, 0.3); /* Light transparency */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Proposal Page Background Image */
+#proposal-page {
+    background: url('our-pic.jpg') no-repeat center center/cover;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+/* Make sure only the background image has transparency */
+#proposal-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('our-pic.jpg') no-repeat center center/cover;
+    opacity: 0.3; /* 30% Transparency */
+    z-index: -1;
+}
+
+/* Styling for text and buttons */
 p {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
+    z-index: 1;
 }
 
 button {
@@ -31,76 +77,9 @@ button {
     font-weight: bold;
     padding: 10px 20px;
     border: none;
-    border-radius: 10px;
     cursor: pointer;
-    margin-top: 20px;
 }
 
 button:hover {
-    background-color: #ff4d6a;
-}
-
-#quiz-container button {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-}
-
-.hint-text {
-    font-style: italic;
-    margin-top: 20px;
-}
-
-/* Transparent Image for Promise Page */
-.transparent-img {
-    width: 50%;
-    opacity: 0.3;
-    margin-top: 20px;
-}
-
-/* Proposal Page Enhancements */
-#proposal-bg {
-    background-image: url('our-pic.jpg'); 
-    background-size: cover;
-    background-position: center;
-    opacity: 0.3;
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.cat-gif {
-    width: 200px;
-    height: auto;
-    margin-top: 20px;
-}
-
-.proposal-text {
-    font-size: 2rem;
-}
-
-.buttons {
-    margin-top: 20px;
-}
-
-.yes-button, .no-button {
-    font-size: 1.5rem;
-    padding: 10px 30px;
-    margin: 10px;
-}
-
-/* Rainbow Flashing Effect */
-@keyframes rainbowFlash {
-    0% { background-color: red; }
-    20% { background-color: orange; }
-    40% { background-color: yellow; }
-    60% { background-color: green; }
-    80% { background-color: blue; }
-    100% { background-color: purple; }
-}
-
-.flash {
-    animation: rainbowFlash 0.5s infinite alternate;
+    background-color: #ff3366;
 }
