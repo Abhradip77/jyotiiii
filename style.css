@@ -1,33 +1,72 @@
 body {
     font-family: 'Georgia', serif;
-    font-weight: bold;
+    background-color: #fddde6;
     text-align: center;
-    background-color: #ffebeb;
+    margin: 0;
+    padding: 0;
 }
 
 .page {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
+    position: relative;
 }
 
 .hidden {
     display: none;
 }
 
+p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 button {
-    background-color: #ff6b81;
+    background-color: #ff6680;
     color: white;
     font-size: 1.5rem;
+    font-weight: bold;
     padding: 10px 20px;
     border: none;
+    border-radius: 10px;
     cursor: pointer;
     margin-top: 20px;
-    border-radius: 10px;
 }
 
 button:hover {
-    background-color: #ff4757;
+    background-color: #ff4d6a;
+}
+
+#quiz-container button {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+}
+
+.hint-text {
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.cat-gif {
+    width: 200px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.proposal-text {
+    font-size: 2rem;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.yes-button, .no-button {
+    font-size: 1.5rem;
+    padding: 10px 30px;
+    margin: 10px;
 }
