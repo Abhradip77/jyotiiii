@@ -7,38 +7,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <!-- Promise Page -->
     <div id="promise-page" class="page">
-        <p>This is gonna be fun but promise me to stay grounded hehe</p>
-        <img src="our-pic-2.jpg" alt="Our Picture" class="transparent-img">
+        <p>This is gonna be fun, but promise me to stay grounded hehe</p>
         <button onclick="goToQuiz()">Promise</button>
     </div>
 
     <!-- Quiz Page -->
     <div id="quiz-page" class="page hidden">
-        <p>Answer these questions!</p>
-        <div id="quiz-container"></div>
-        <p class="hint-text">It's hard to challenge you at times huh</p>
+        <p id="quiz-question"></p>
+        <div id="quiz-options"></div>
         <button id="next-button" class="hidden" onclick="goToProposal()">Next</button>
     </div>
 
     <!-- Proposal Page -->
     <div id="proposal-page" class="page hidden">
-        <div id="proposal-bg">
-            <img id="cat-img" src="cat.gif" alt="Cute Cat" class="cat-gif">
-            <p class="proposal-text">Will you be my prom date? 💖</p>
-            <div class="buttons">
-                <button class="yes-button" onclick="acceptProposal()">Yes</button>
-                <button class="no-button">No</button>
-            </div>
-        </div>
+        <p>Will you be my prom date? 💖</p>
+        <button onclick="showYes()">Yes</button>
+        <button onclick="showNo()">No</button>
+        <img id="gif" class="hidden" src="cat-heart.gif">
     </div>
-
-    <audio id="bg-music" autoplay loop>
-        <source src="song.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
 
     <script src="script.js"></script>
 </body>
