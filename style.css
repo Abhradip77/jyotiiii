@@ -1,107 +1,85 @@
-/* Import alternative classy font */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-
+/* General Styles */
 body {
     font-family: 'Playfair Display', serif;
     text-align: center;
-    background-color: #FADADD;
     margin: 0;
-    padding: 0;
-    font-weight: bold;
-}
-
-/* General container styling */
-#container {
+    background-color: #FADADD;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-/* Styling for the promise page */
-#promise-container {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-size: 45px; /* Large and readable */
+}
+
+/* Hidden class for pages */
+.hidden {
+    display: none;
+}
+
+/* Page container */
+.page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Promise Page */
+#promise-page {
+    background: url('our-pic-2.jpg') center/cover no-repeat;
+    opacity: 0.3;
+}
+
+.promise-text {
+    font-size: 32px;
     font-weight: bold;
 }
 
-/* Buttons */
 button {
-    padding: 18px 35px;
-    margin: 15px;
-    font-size: 30px;
-    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    padding: 12px 24px;
+    margin-top: 20px;
+    cursor: pointer;
     background-color: #FB607F;
     color: white;
     border: none;
-    cursor: pointer;
-    border-radius: 12px;
+    font-family: 'Playfair Display', serif;
 }
 
-button:hover {
-    background-color: #FF385C;
-}
-
-/* Image container */
-#image-container img {
-    width: 50%; /* Adjusted size */
-    max-width: 350px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-}
-
-/* Background image after "Yes" */
-#background-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('our-pic.jpg') no-repeat center center;
-    background-size: cover;
-    opacity: 0.3; /* 30% transparency */
-    z-index: -1;
-}
-
-/* Question text */
-#question {
-    font-size: 55px;
+/* Quiz Page */
+.quiz-title {
+    font-size: 28px;
     font-weight: bold;
-    margin-bottom: 20px;
 }
 
-/* Options container */
+.quiz-message {
+    font-size: 20px;
+    color: gray;
+    margin-top: 20px;
+}
+
+/* Proposal Page */
+#image-container img {
+    width: 50%;
+}
+
+#question {
+    font-size: 42px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
 #options {
     margin-top: 20px;
 }
 
-/* MCQ styling */
-.mcq-container {
-    font-size: 35px;
-    margin: 20px;
-}
-
-.mcq-option {
-    display: block;
-    margin: 10px 0;
-    padding: 15px;
-    font-size: 30px;
-    cursor: pointer;
-    border-radius: 8px;
-    border: 2px solid #FB607F;
-}
-
-.mcq-option.correct {
+#yes-button {
+    font-size: 32px;
     background-color: green;
-    color: white;
 }
 
-.mcq-option.wrong {
+#no-button {
+    font-size: 32px;
     background-color: red;
-    color: white;
 }
