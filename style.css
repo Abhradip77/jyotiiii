@@ -1,22 +1,16 @@
+/* Import alternative classy font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
 body {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Playfair Display', serif;
     text-align: center;
-    margin: 0;
     background-color: #FADADD;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
 }
 
-.hidden {
-    display: none;
-}
-
-.background-img {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    opacity: 0.3;
-    object-fit: cover;
-}
-
+/* General container styling */
 #container {
     display: flex;
     flex-direction: column;
@@ -25,38 +19,89 @@ body {
     height: 100vh;
 }
 
-#image-container img {
-    max-width: 60%;
-    border-radius: 15px;
+/* Styling for the promise page */
+#promise-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 45px; /* Large and readable */
+    font-weight: bold;
 }
 
-#background-pic {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.3;
-    object-fit: cover;
-}
-
-#question {
-    font-size: 48px;
-}
-
+/* Buttons */
 button {
-    padding: 12px 24px;
-    font-size: 28px;
-    border-radius: 10px;
+    padding: 18px 35px;
+    margin: 15px;
+    font-size: 30px;
+    font-family: 'Playfair Display', serif;
     background-color: #FB607F;
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 12px;
 }
 
 button:hover {
-    background-color: #ff3366;
+    background-color: #FF385C;
 }
 
-.note {
-    font-size: 20px;
-    color: gray;
+/* Image container */
+#image-container img {
+    width: 50%; /* Adjusted size */
+    max-width: 350px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* Background image after "Yes" */
+#background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('our-pic.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3; /* 30% transparency */
+    z-index: -1;
+}
+
+/* Question text */
+#question {
+    font-size: 55px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Options container */
+#options {
+    margin-top: 20px;
+}
+
+/* MCQ styling */
+.mcq-container {
+    font-size: 35px;
+    margin: 20px;
+}
+
+.mcq-option {
+    display: block;
+    margin: 10px 0;
+    padding: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid #FB607F;
+}
+
+.mcq-option.correct {
+    background-color: green;
+    color: white;
+}
+
+.mcq-option.wrong {
+    background-color: red;
+    color: white;
 }
