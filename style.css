@@ -1,21 +1,20 @@
+/* General page setup */
 body {
     font-family: 'Georgia', serif;
-    background-color: #fddde6;
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
-/* General styling for all pages */
+/* Fullscreen page styling */
 .page {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100vw;
     position: relative;
-    overflow: hidden;
-    width: 100%;
 }
 
 /* Hide inactive pages */
@@ -23,34 +22,17 @@ body {
     display: none;
 }
 
-/* Background styling for Promise Page */
+/* First Page (Promise Page) */
 #promise-page {
-    background: url('our-pic-2.jpg') no-repeat center center/cover;
-    width: 100%;
-    height: 100vh;
-}
-
-/* Background overlay to ensure text visibility */
-#promise-page .bg-overlay {
-    background-color: rgba(255, 255, 255, 0.3); /* Light transparency */
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Proposal Page Background Image */
-#proposal-page {
-    background: url('our-pic.jpg') no-repeat center center/cover;
+    background: url('our-pic-2.jpg') no-repeat center center;
     background-size: cover;
-    width: 100%;
-    height: 100vh;
+}
+
+/* Proposal Page (with 30% transparent background) */
+#proposal-page {
     position: relative;
 }
 
-/* Make sure only the background image has transparency */
 #proposal-page::before {
     content: "";
     position: absolute;
@@ -58,12 +40,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('our-pic.jpg') no-repeat center center/cover;
-    opacity: 0.3; /* 30% Transparency */
+    background: url('our-pic.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3; /* Only background is transparent */
     z-index: -1;
 }
 
-/* Styling for text and buttons */
+/* Make text clearly visible */
 p {
     font-size: 2rem;
     font-weight: bold;
@@ -78,6 +61,7 @@ button {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+    z-index: 2;
 }
 
 button:hover {
