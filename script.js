@@ -48,13 +48,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function showYes() {
-        document.getElementById("gif").classList.remove("hidden");
-
-        // Add rainbow flash effect
+        document.getElementById("gif").src = "cat-heart.gif";
         document.getElementById("proposal-page").style.animation = "rainbowFlash 1s infinite alternate";
     }
 
-    // Attach functions to global scope
     window.goToQuiz = goToQuiz;
     window.goToProposal = goToProposal;
     window.showYes = showYes;
