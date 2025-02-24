@@ -9,7 +9,7 @@ function selectOption(option) {
         document.getElementById('no-button').innerText = 'You sure?';
         let yesButton = document.getElementById('yes-button');
         let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-        yesButton.style.fontSize = (currentSize * 1.5) + 'px';
+        yesButton.style.fontSize = (currentSize * 1.5) + 'px'; // 50% increase
     }
 }
 
