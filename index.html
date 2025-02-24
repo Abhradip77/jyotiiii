@@ -3,15 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let's Begin</title>
+    <title>Will You Be My Prom?</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="background-image" class="bg-image"></div> <!-- Background Image -->
-    <div id="intro-container">
+    <audio id="background-music" loop>
+        <source src="music.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- First Page -->
+    <div id="promise-page">
+        <img src="our-pic-2.jpg" class="background-img">
         <h1>This is gonna be fun, but promise me to stay grounded hehe</h1>
-        <button onclick="nextPage('mcq.html')">Promise</button>
+        <button onclick="startQuiz()">Promise</button>
     </div>
+
+    <!-- Quiz Page -->
+    <div id="quiz-page" class="hidden">
+        <img src="our-pic-2.jpg" class="background-img">
+        <h2>Answer these to proceed</h2>
+        <div id="questions"></div>
+        <button id="next-button" class="hidden" onclick="showProposal()">Next</button>
+        <p class="note">It's hard to challenge you at times huh</p>
+    </div>
+
+    <!-- Proposal Page -->
+    <div id="proposal-page" class="hidden">
+        <div id="container">
+            <div id="image-container">
+                <img id="cat-img" src="cat.gif" alt="Cute Cat">
+                <img id="background-pic" src="our-pic.jpg" class="hidden">
+            </div>
+            <div id="text-container">
+                <div id="question">Will you be my prom date? 💖</div>
+                <div id="options">
+                    <button id="yes-button" onclick="selectOption('yes')">Yes</button>
+                    <button id="no-button" onclick="selectOption('no')">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
