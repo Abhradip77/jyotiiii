@@ -48,25 +48,19 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("promise-page").classList.add("hidden");
         document.getElementById("quiz-page").classList.remove("hidden");
         loadQuestion();
-        playMusic(); // Start music
+        bgMusic.play(); // Ensure music continues
     }
 
     function goToProposal() {
         document.getElementById("quiz-page").classList.add("hidden");
         document.getElementById("proposal-page").classList.remove("hidden");
-        playMusic(); // Restart if paused
+        bgMusic.play(); // Ensure music plays on proposal page
     }
 
     function acceptProposal() {
-        document.getElementById("proposal-bg").classList.add("accepted");
+        document.getElementById("proposal-bg").classList.add("proposal-accepted");
         document.body.classList.add("flash");
-        document.getElementById("cat-img").src = "cat_heart.gif";
-    }
-
-    function playMusic() {
-        bgMusic.play().catch(error => {
-            console.log("Music play blocked by browser until user interacts.");
-        });
+        document.getElementById("cat-img").src = "cat-heart.gif";
     }
 
     window.goToQuiz = goToQuiz;
