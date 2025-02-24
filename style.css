@@ -1,69 +1,81 @@
-/* General page setup */
 body {
-    font-family: 'Georgia', serif;
+    font-family: 'Arial', sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
+    background-size: cover;
+    background-position: center;
 }
 
-/* Fullscreen page styling */
-.page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-}
-
-/* Hide inactive pages */
+/* Hide pages by default */
 .hidden {
     display: none;
 }
 
-/* First Page (Promise Page) */
+/* Promise Page */
 #promise-page {
-    background: url('our-pic-2.jpg') no-repeat center center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('our-pic-2.jpg');
     background-size: cover;
+    background-position: center;
+    opacity: 1;
 }
 
-/* Proposal Page (with 30% transparent background) */
+/* Quiz Page */
+#quiz-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('our-pic-2.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+
+#quiz-options button {
+    display: block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+/* Proposal Page */
 #proposal-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: relative;
+    background-color: white;
 }
 
-#proposal-page::before {
-    content: "";
+#gif {
+    width: 200px;
+}
+
+#bg-pic {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('our-pic.jpg') no-repeat center center;
-    background-size: cover;
-    opacity: 0.3; /* Only background is transparent */
+    opacity: 0.3;
     z-index: -1;
 }
 
-/* Make text clearly visible */
-p {
-    font-size: 2rem;
-    font-weight: bold;
-    z-index: 1;
-}
-
-button {
-    background-color: #ff6680;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    z-index: 2;
-}
-
-button:hover {
-    background-color: #ff3366;
+/* Flash effect when "Yes" is clicked */
+@keyframes rainbowFlash {
+    0% { background-color: red; }
+    20% { background-color: orange; }
+    40% { background-color: yellow; }
+    60% { background-color: green; }
+    80% { background-color: blue; }
+    100% { background-color: violet; }
 }
