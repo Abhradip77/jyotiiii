@@ -1,15 +1,10 @@
 /* General Styles */
 body {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Arial', sans-serif;
     text-align: center;
     margin: 0;
     background-color: #FADADD;
     overflow: hidden;
-}
-
-/* Hide Elements */
-.hidden {
-    display: none;
 }
 
 /* Background Image */
@@ -25,15 +20,6 @@ body {
 }
 
 /* Container */
-#container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-/* Question Section */
 #quiz-container {
     width: 90%;
     max-width: 600px;
@@ -48,11 +34,11 @@ body {
     margin: 20px 0;
 }
 
-/* Buttons */
+/* Answer Buttons */
 button {
     padding: 12px 24px;
-    font-size: 20px;
-    border-radius: 10px;
+    font-size: 18px;
+    border-radius: 8px;
     background-color: #FB607F;
     color: white;
     border: none;
@@ -66,7 +52,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Red for Wrong, Green for Correct */
+/* Correct & Wrong Answer Colors */
 .correct {
     background-color: green !important;
 }
@@ -83,7 +69,8 @@ button:hover {
 
 /* Timer */
 #timer {
-    font-size: 30px;
+    font-size: 24px;
     font-weight: bold;
     margin-top: 20px;
 }
+
