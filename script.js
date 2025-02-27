@@ -5,16 +5,23 @@ document.addEventListener("DOMContentLoaded", function () {
         music.play().catch(error => console.log("Music playback blocked:", error));
     }
 
+    // Autoplay music after any user interaction
+    document.body.addEventListener("click", function () {
+        if (music.paused) {
+            playMusic();
+        }
+    });
+
     function startQuiz() {
         document.getElementById("promise-page").classList.add("hidden");
         document.getElementById("quiz-page").classList.remove("hidden");
-        playMusic();
+        playMusic(); // Ensure music starts
     }
 
     function showProposal() {
         document.getElementById("quiz-page").classList.add("hidden");
         document.getElementById("proposal-page").classList.remove("hidden");
-        playMusic();
+        playMusic(); // Continue playing music
     }
 
     function selectOption(option) {
