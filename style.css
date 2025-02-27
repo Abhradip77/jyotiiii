@@ -1,81 +1,62 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Dancing Script', cursive;
     text-align: center;
     margin: 0;
-    padding: 0;
-    background-size: cover;
-    background-position: center;
+    background-color: #FADADD;
 }
 
-/* Hide pages by default */
 .hidden {
     display: none;
 }
 
-/* Promise Page */
-#promise-page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('our-pic-2.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 1;
-}
-
-/* Quiz Page */
-#quiz-page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('our-pic-2.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 1;
-}
-
-#quiz-options button {
-    display: block;
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 18px;
-}
-
-/* Proposal Page */
-#proposal-page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    background-color: white;
-}
-
-#gif {
-    width: 200px;
-}
-
-#bg-pic {
-    position: absolute;
-    top: 0;
-    left: 0;
+.background-img {
+    position: fixed;
     width: 100%;
     height: 100%;
     opacity: 0.3;
-    z-index: -1;
+    object-fit: cover;
 }
 
-/* Flash effect when "Yes" is clicked */
-@keyframes rainbowFlash {
-    0% { background-color: red; }
-    20% { background-color: orange; }
-    40% { background-color: yellow; }
-    60% { background-color: green; }
-    80% { background-color: blue; }
-    100% { background-color: violet; }
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#image-container img {
+    max-width: 60%;
+    border-radius: 15px;
+}
+
+#background-pic {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    object-fit: cover;
+}
+
+#question {
+    font-size: 48px;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 28px;
+    border-radius: 10px;
+    background-color: #FB607F;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff3366;
+}
+
+.note {
+    font-size: 20px;
+    color: gray;
 }
