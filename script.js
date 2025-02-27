@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Ensure music continues playing after interaction
     document.body.addEventListener("click", playMusic);
+    document.body.addEventListener("mouseover", playMusic);
 
     function startQuiz() {
         document.getElementById("promise-page").classList.add("hidden");
@@ -22,26 +23,36 @@ document.addEventListener("DOMContentLoaded", function () {
         playMusic();
     }
 
+    let noClickCount = 0;
     function selectOption(option) {
         if (option === "yes") {
             document.getElementById("cat-img").src = "cat-heart.gif";
             document.getElementById("background-pic").classList.remove("hidden");
 
-            // Activate rainbow effect
+            // Rainbow flash starts only on YES
             document.body.classList.add("rainbow-flash");
 
             document.getElementById("options").style.display = "none";
         } else {
+            noClickCount++;
             let noButton = document.getElementById("no-button");
-            if (noButton.innerText === "You sure?") {
-                noButton.innerText = "Really sure?";
-            } else if (noButton.innerText === "Really sure?") {
-                noButton.innerText = "Think again!";
-            } else if (noButton.innerText === "Think again!") {
-                noButton.innerText = "Last chance!";
+            let yesButton = document.getElementById("yes-button");
+
+            const noMessages = [
+                "Still no? 🥺",
+                "I'll cry 😭",
+                "I'll die 💀",
+                "Pleaseeee 🥺",
+                "Okay, I'm heartbroken 💔"
+            ];
+
+            // Cycle through messages & grow YES button
+            if (noClickCount < noMessages.length) {
+                noButton.innerText = noMessages[noClickCount];
+                yesButton.style.fontSize = `${28 + (noClickCount * 10)}px`; // Increase YES button size
             } else {
-                noButton.innerText = "Ok fine 😢";
-                document.getElementById("yes-button").click(); // Auto-click "Yes" after last no
+                noButton.innerText = "Fine... 😢";
+                yesButton.click(); // Auto-click "Yes" after last "No"
             }
         }
     }
