@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will You Be My Prom?</title>
+    <link rel="icon" href="data:,">  <!-- Prevents favicon 404 error -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:,">
 </head>
 <body>
     <audio id="background-music" loop>
@@ -17,9 +17,11 @@
     <!-- First Page -->
     <div id="promise-page">
         <img src="our-pic-2.jpg" class="background-img">
-        <h1>This is gonna be fun, but promise me to stay grounded hehe</h1>
-        <p id="countdown"></p>  <!-- Countdown Timer -->
-        <button onclick="startQuiz()">Promise</button>
+        <div class="centered-content">
+            <h1>This is gonna be fun, but promise me to stay grounded hehe</h1>
+            <button onclick="startQuiz()">Promise</button>
+            <p id="countdown"></p>  <!-- Countdown timer -->
+        </div>
     </div>
 
     <!-- Quiz Page -->
@@ -44,12 +46,10 @@
                     <button id="yes-button" onclick="selectOption('yes')">Yes</button>
                     <button id="no-button" onclick="selectOption('no')">No</button>
                 </div>
+                <p id="love-message" class="hidden">I love you Jyoti ❤️</p> <!-- Love message -->
             </div>
         </div>
     </div>
-
-    <!-- Love Message After Yes -->
-    <div id="love-message" class="hidden">I love you Jyoti ❤️</div>
 
     <script src="script.js"></script>
 </body>
