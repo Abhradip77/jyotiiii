@@ -1,16 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     const music = document.getElementById("background-music");
-    let timerStarted = false;
 
     function playMusic() {
-        music.play().catch(error => console.log("Music playback blocked:", error));
+        music.play().catch(error => console.log("Music blocked:", error));
     }
 
     function startQuiz() {
-        document.getElementById("promise-page").classList.add("hidden");
-        document.getElementById("quiz-page").classList.remove("hidden");
+        document.getElementById("quiz-container").classList.remove("hidden");
         playMusic();
-        loadQuiz();
     }
 
     function loadQuiz() {
@@ -22,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
             { question: "My fav top of yours?", options: ["Black kissi one", "Pink one", "Yellow flower top", "White and pink kurta top"], answer: "White and pink kurta top" }
         ];
 
-        const quizContainer = document.getElementById("questions");
-        quizContainer.innerHTML = "";
+        const quizContainer = document.getElementById("quiz-container");
+        quizContainer.innerHTML = '<h2>Answer these questions correctly to continue...</h2>';
 
         quizData.forEach((q, index) => {
             let div = document.createElement("div");
@@ -39,6 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             quizContainer.appendChild(div);
         });
+
+        // Add Next button at the end
+        let nextButton = document.createElement("button");
+        nextButton.id = "next-button";
+        nextButton.innerText = "Next";
+        nextButton.style.display = "none";
+        nextButton.onclick = () => nextPage("Proposal.html");
+        quizContainer.appendChild(nextButton);
     }
 
     function checkAnswer(button, selected, correct) {
@@ -69,13 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (option === "yes") {
             catImg.src = "cat-heart.gif";
-            document.body.style.animation = "rainbowFlash 1s infinite alternate";
             document.getElementById("options").style.display = "none";
-
-            if (!timerStarted) {
-                startCountdown();
-                timerStarted = true;
-            }
         } else {
             let noTexts = ["Still no?", "I'll die", "Don't do this", "Are you sure?"];
             let currentNoText = noButton.innerText;
@@ -87,31 +86,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function startCountdown() {
-        const countdownDate = new Date("Feb 28, 2025 14:00:00").getTime();
-        const timerElement = document.createElement("div");
-        timerElement.id = "timer";
-        document.body.appendChild(timerElement);
-
-        const countdownInterval = setInterval(function () {
-            let now = new Date().getTime();
-            let timeLeft = countdownDate - now;
-
-            let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            timerElement.innerHTML = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-            if (timeLeft < 0) {
-                clearInterval(countdownInterval);
-                timerElement.innerHTML = "It's prom time! 🎉";
-            }
-        }, 1000);
-    }
-
     window.startQuiz = startQuiz;
     window.nextPage = nextPage;
     window.selectOption = selectOption;
+
+    loadQuiz();
 });
