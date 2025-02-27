@@ -1,30 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
     const music = document.getElementById("background-music");
-    const promisePage = document.getElementById("promise-page");
-    const quizPage = document.getElementById("quiz-page");
-    const proposalPage = document.getElementById("proposal-page");
-    const quizContainer = document.getElementById("questions");
-    const nextButton = document.getElementById("next-button");
 
     function playMusic() {
         music.play().catch(error => console.log("Music playback blocked:", error));
     }
 
-    function startQuiz() {
-        console.log("Promise button clicked - transitioning to Quiz Page.");
-        promisePage.style.display = "none";
-        quizPage.style.display = "flex";
+    window.startQuiz = function () {
+        document.getElementById("promise-page").classList.add("hidden");
+        document.getElementById("quiz-page").classList.remove("hidden");
         playMusic();
-    }
+    };
 
-    function showProposal() {
-        console.log("Quiz completed - transitioning to Proposal Page.");
-        quizPage.style.display = "none";
-        proposalPage.style.display = "flex";
+    window.showProposal = function () {
+        document.getElementById("quiz-page").classList.add("hidden");
+        document.getElementById("proposal-page").classList.remove("hidden");
         playMusic();
-    }
+    };
 
-    function selectOption(option) {
+    window.selectOption = function (option) {
         const backgroundPic = document.getElementById("background-pic");
         const catImg = document.getElementById("cat-img");
         const noButton = document.getElementById("no-button");
@@ -32,21 +25,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (option === "yes") {
             catImg.src = "cat-heart.gif";
+            backgroundPic.classList.remove("hidden");
+
             document.body.classList.add("rainbow-flash");
+
             document.getElementById("options").style.display = "none";
         } else {
             let noTexts = ["Still no?", "I'll die", "Don't do this", "Are you sure?"];
             let currentNoText = noButton.innerText;
             let newTextIndex = noTexts.indexOf(currentNoText) + 1;
             if (newTextIndex >= noTexts.length) newTextIndex = 0;
+
             noButton.innerText = noTexts[newTextIndex];
 
             let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
             yesButton.style.fontSize = `${currentSize + 5}px`;
         }
-    }
+    };
 
-    function checkAnswers() {
+    window.checkAnswers = function () {
         const correctAnswers = ["19 sep", "pop tates", "scorpio", "real madrid", "white and pink kurta top"];
         let allCorrect = true;
 
@@ -65,9 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (allCorrect) {
-            nextButton.style.display = "block";
+            document.getElementById("next-button").classList.remove("hidden");
         }
-    }
+    };
 
     const quizData = [
         { question: "When did we go official?", options: ["19 sep", "18 sep", "15 sep", "16 sep"] },
@@ -77,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { question: "My fav top of yours?", options: ["black kissi one", "pink one", "yellow flower top", "white and pink kurta top"] }
     ];
 
+    const quizContainer = document.getElementById("questions");
     quizData.forEach((q, index) => {
         let div = document.createElement("div");
         div.classList.add("question");
@@ -86,9 +84,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         quizContainer.appendChild(div);
     });
-
-    window.startQuiz = startQuiz;
-    window.showProposal = showProposal;
-    window.selectOption = selectOption;
-    window.checkAnswers = checkAnswers;
 });
