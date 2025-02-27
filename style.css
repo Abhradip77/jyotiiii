@@ -4,6 +4,7 @@ body {
     margin: 0;
     background-color: #FADADD;
     overflow: hidden;
+    font-size: 22px;
 }
 
 .hidden {
@@ -35,14 +36,14 @@ body {
 }
 
 #question {
-    font-size: 56px;
+    font-size: 52px;
     transition: color 0.5s;
 }
 
 button {
-    padding: 14px 28px;
+    padding: 15px 30px;
     font-size: 32px;
-    border-radius: 12px;
+    border-radius: 10px;
     background-color: #FB607F;
     color: white;
     border: none;
@@ -60,9 +61,10 @@ button:hover {
 
 /* Countdown Timer */
 #countdown {
-    font-size: 36px;
+    font-size: 32px;
     font-weight: bold;
     margin-top: 20px;
+    color: #FF1493;
 }
 
 /* Rainbow Flash Effect */
