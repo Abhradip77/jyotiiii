@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
             backgroundPic.classList.remove("hidden");
 
             // Add rainbow flashing effect
-            document.body.style.animation = "rainbowFlash 1s infinite alternate";
+            document.body.classList.add("rainbow-flash");
 
             // Hide buttons after yes
             document.getElementById("options").style.display = "none";
