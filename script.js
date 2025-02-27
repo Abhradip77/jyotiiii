@@ -2,15 +2,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const music = document.getElementById("background-music");
 
     function playMusic() {
-        music.play().catch(error => console.log("Music playback blocked:", error));
+        if (music.paused) {
+            music.play().catch(error => console.log("Music playback blocked:", error));
+        }
     }
 
-    // Autoplay music after first user interaction
-    document.body.addEventListener("click", function () {
-        if (music.paused) {
-            playMusic();
-        }
-    });
+    // Ensure music continues playing after interaction
+    document.body.addEventListener("click", playMusic);
 
     function startQuiz() {
         document.getElementById("promise-page").classList.add("hidden");
@@ -28,10 +26,23 @@ document.addEventListener("DOMContentLoaded", function () {
         if (option === "yes") {
             document.getElementById("cat-img").src = "cat-heart.gif";
             document.getElementById("background-pic").classList.remove("hidden");
+
+            // Activate rainbow effect
+            document.body.classList.add("rainbow-flash");
+
             document.getElementById("options").style.display = "none";
         } else {
-            document.getElementById("no-button").innerText = "You sure?";
-            document.getElementById("yes-button").style.fontSize = "36px";
+            let noButton = document.getElementById("no-button");
+            if (noButton.innerText === "You sure?") {
+                noButton.innerText = "Really sure?";
+            } else if (noButton.innerText === "Really sure?") {
+                noButton.innerText = "Think again!";
+            } else if (noButton.innerText === "Think again!") {
+                noButton.innerText = "Last chance!";
+            } else {
+                noButton.innerText = "Ok fine 😢";
+                document.getElementById("yes-button").click(); // Auto-click "Yes" after last no
+            }
         }
     }
 
