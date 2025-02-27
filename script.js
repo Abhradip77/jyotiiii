@@ -10,44 +10,54 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("quiz-page").classList.remove("hidden");
         playMusic();
 
+        const quizData = [
+            { question: "When did we go official?", options: ["19 Sep", "18 Sep", "15 Sep", "16 Sep"], answer: "19 Sep" },
+            { question: "Our fav spot?", options: ["Si Nonnas", "Dailys", "High Garden", "Pop Tates"], answer: "Pop Tates" },
+            { question: "My birth sign?", options: ["Capricorn", "Sagittarius", "Scorpio", "Cancer"], answer: "Scorpio" },
+            { question: "My favourite team?", options: ["United", "Real Madrid", "Atletico Madrid", "Athletic Club"], answer: "Real Madrid" },
+            { question: "My fav top of yours?", options: ["Black kissi one", "Pink one", "Yellow flower top", "White and pink kurta top"], answer: "White and pink kurta top" }
+        ];
+
         const quizContainer = document.getElementById("questions");
-        if (quizContainer.children.length === 0) {
-            const quizData = [
-                { question: "When did we go official?", options: ["19 Sep", "18 Sep", "15 Sep", "16 Sep"], answer: "19 Sep" },
-                { question: "Our fav spot?", options: ["Si Nonnas", "Dailys", "High Garden", "Pop Tates"], answer: "Pop Tates" },
-                { question: "My birth sign?", options: ["Capricorn", "Sagittarius", "Scorpio", "Cancer"], answer: "Scorpio" }
-            ];
+        quizContainer.innerHTML = ""; // Clear previous questions
 
-            quizData.forEach((q, index) => {
-                let div = document.createElement("div");
-                div.classList.add("question");
-                div.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
-                q.options.forEach(opt => {
-                    div.innerHTML += `<label><input type="radio" name="q${index}" value="${opt}" onchange="checkAnswers()"> ${opt}</label><br>`;
-                });
-                quizContainer.appendChild(div);
+        quizData.forEach((q, index) => {
+            let div = document.createElement("div");
+            div.classList.add("question");
+            div.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
+            
+            q.options.forEach(opt => {
+                let btn = document.createElement("button");
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(btn, opt, q.answer);
+                div.appendChild(btn);
             });
-        }
+
+            quizContainer.appendChild(div);
+        });
     }
 
-    function selectOption(option) {
-        if (option === "yes") {
-            document.body.style.animation = "rainbowFlash 1s infinite alternate";
-            document.getElementById("countdown").classList.remove("hidden");
-            startCountdown();
+    function checkAnswer(button, selected, correct) {
+        if (selected === correct) {
+            button.style.backgroundColor = "green";
+        } else {
+            button.style.backgroundColor = "red";
         }
+        checkAllAnswers();
     }
 
-    function startCountdown() {
-        const eventDate = new Date("February 28, 2025 14:00:00").getTime();
-        setInterval(function () {
-            const now = new Date().getTime();
-            const diff = eventDate - now;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            document.getElementById("countdown").innerText = `Prom in ${days} days!`;
-        }, 1000);
+    function checkAllAnswers() {
+        let allCorrect = [...document.querySelectorAll(".question")].every(q => 
+            [...q.children].some(btn => btn.style.backgroundColor === "green")
+        );
+        
+        document.getElementById("next-button").style.display = allCorrect ? "block" : "none";
+    }
+
+    function nextPage(url) {
+        window.location.href = url;
     }
 
     window.startQuiz = startQuiz;
-    window.selectOption = selectOption;
+    window.nextPage = nextPage;
 });
