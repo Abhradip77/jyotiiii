@@ -29,47 +29,30 @@ body {
     height: 100vh;
 }
 
-#image-container img {
-    max-width: 60%;
-    border-radius: 15px;
-}
-
 #question {
-    font-size: 55px;
-    font-weight: bold;
-    transition: color 0.5s;
+    font-size: 48px;
 }
 
 button {
-    padding: 15px 30px;
-    font-size: 32px;
-    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 28px;
+    border-radius: 10px;
     background-color: #FB607F;
     color: white;
     border: none;
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.3s;
 }
 
 button:hover {
     background-color: #ff3366;
-    transform: scale(1.1);
 }
 
-.note {
-    font-size: 22px;
-    color: gray;
-}
-
-/* Countdown Timer */
 #countdown {
-    font-size: 50px;
-    font-weight: bold;
-    color: #d9534f;
+    font-size: 30px;
     margin-top: 20px;
+    color: #ff3366;
 }
 
-/* Rainbow Flash Effect */
 @keyframes rainbowFlash {
     0% { background-color: red; }
     20% { background-color: orange; }
@@ -78,3 +61,4 @@ button:hover {
     80% { background-color: blue; }
     100% { background-color: violet; }
 }
+
