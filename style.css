@@ -14,22 +14,10 @@ body {
 }
 
 /* Background images */
-.background-img {
+.background-img, #background-pic {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    top: 0;
-    left: 0;
-    opacity: 0.3;
-    object-fit: cover;
-    z-index: -1;
-}
-
-/* Proposal page background */
-#background-pic {
-    position: fixed;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
     opacity: 0.3; /* Ensures only the background is transparent */
@@ -53,7 +41,7 @@ body {
     animation: rainbow 0.5s infinite;
 }
 
-/* Container adjustments */
+/* Centered layout */
 #container {
     display: flex;
     flex-direction: column;
@@ -85,6 +73,7 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
 button:hover {
