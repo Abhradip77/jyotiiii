@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let questions = document.querySelectorAll(".question");
     let answeredCorrectly = 0;
 
+    // Function to check answer in MCQ
     window.checkAnswer = function (button, answer) {
         let question = button.parentElement;
         let correctAnswer = question.getAttribute("data-answer");
@@ -20,10 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    // Function to go to next page
     window.nextPage = function (page) {
         window.location.href = page;
     };
 
+    // Function when selecting Yes or No in Proposal.html
     window.selectOption = function (choice) {
         let image = document.getElementById("main-image");
         let questionText = document.getElementById("question");
@@ -38,8 +41,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    // Function to play music
     function playMusic() {
         let music = document.getElementById("background-music");
         music.play().catch(error => console.log("Autoplay failed:", error));
     }
+
+    // Function to handle promise button click
+    window.startPromise = function () {
+        let promiseButton = document.getElementById("promise-button");
+        promiseButton.innerText = "I Promise to Always Love You ❤️";
+        promiseButton.disabled = true; // Disable after clicking
+    };
 });
