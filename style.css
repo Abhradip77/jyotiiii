@@ -3,45 +3,80 @@ body {
     text-align: center;
     margin: 0;
     background-color: #FADADD;
+    overflow: hidden;
 }
 
+/* Hide elements by default */
 .hidden {
     display: none;
 }
 
+/* Background Image Fix */
 .background-img {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.3;
     object-fit: cover;
+    z-index: -1;
 }
 
+/* First Page & Quiz Page Fix */
+#promise-page, #quiz-page {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Proposal Page Fix */
+#proposal-page {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+/* Background Image in Proposal Page (fixed) */
+#background-pic {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3; /* Only background is transparent */
+    z-index: -1;
+}
+
+/* Centering Container */
 #container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
 }
 
+/* Image Styling */
 #image-container img {
     max-width: 60%;
     border-radius: 15px;
 }
 
-#background-pic {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.3;
-    object-fit: cover;
-}
-
+/* Question Styling */
 #question {
     font-size: 48px;
 }
 
+/* Buttons */
 button {
     padding: 12px 24px;
     font-size: 28px;
@@ -56,6 +91,7 @@ button:hover {
     background-color: #ff3366;
 }
 
+/* Note */
 .note {
     font-size: 20px;
     color: gray;
