@@ -7,51 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="background-image" class="bg-image"></div> <!-- Background Image -->
+    <div id="background-image" class="bg-image"></div>
     <div id="quiz-container">
         <h2>Answer these questions correctly to continue...</h2>
-
-        <div class="question" data-answer="a">
-            <p>1. When did we go official?</p>
-            <button onclick="checkAnswer(this, 'a')">a) 19 Sep</button>
-            <button onclick="checkAnswer(this, 'b')">b) 18 Sep</button>
-            <button onclick="checkAnswer(this, 'c')">c) 15 Sep</button>
-            <button onclick="checkAnswer(this, 'd')">d) 16 Sep</button>
-        </div>
-
-        <div class="question" data-answer="d">
-            <p>2. Our fav spot?</p>
-            <button onclick="checkAnswer(this, 'a')">a) Si Nonnas</button>
-            <button onclick="checkAnswer(this, 'b')">b) Dailys</button>
-            <button onclick="checkAnswer(this, 'c')">c) High Garden</button>
-            <button onclick="checkAnswer(this, 'd')">d) Pop Tates</button>
-        </div>
-
-        <div class="question" data-answer="c">
-            <p>3. My birth sign?</p>
-            <button onclick="checkAnswer(this, 'a')">a) Capricorn</button>
-            <button onclick="checkAnswer(this, 'b')">b) Sagittarius</button>
-            <button onclick="checkAnswer(this, 'c')">c) Scorpio</button>
-            <button onclick="checkAnswer(this, 'd')">d) Cancer</button>
-        </div>
-
-        <div class="question" data-answer="b">
-            <p>4. My favourite team?</p>
-            <button onclick="checkAnswer(this, 'a')">a) United</button>
-            <button onclick="checkAnswer(this, 'b')">b) Real Madrid</button>
-            <button onclick="checkAnswer(this, 'c')">c) Atletico Madrid</button>
-            <button onclick="checkAnswer(this, 'd')">d) Athletic Club</button>
-        </div>
-
-        <div class="question" data-answer="d">
-            <p>5. My fav top of yours?</p>
-            <button onclick="checkAnswer(this, 'a')">a) Black kissi one</button>
-            <button onclick="checkAnswer(this, 'b')">b) Pink one</button>
-            <button onclick="checkAnswer(this, 'c')">c) Yellow flower top</button>
-            <button onclick="checkAnswer(this, 'd')">d) White and pink kurta top</button>
-        </div>
-
-        <p id="challenge-text">It's hard to challenge you at times, huh?</p>
+        <div id="questions"></div>
+        <p id="challenge-text">It's hard to challenge you at times huh</p>
         <button id="next-button" onclick="nextPage('Proposal.html')" style="display: none;">Next</button>
     </div>
     <script src="script.js"></script>
