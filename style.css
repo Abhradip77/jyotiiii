@@ -4,8 +4,8 @@ body {
     text-align: center;
     margin: 0;
     background-color: #FADADD;
-    position: relative;
     overflow: hidden;
+    position: relative;
 }
 
 /* Hide elements dynamically */
@@ -25,7 +25,7 @@ body {
     z-index: -1;
 }
 
-/* Proposal page background fix */
+/* Proposal page background */
 #background-pic {
     position: fixed;
     width: 100%;
@@ -35,6 +35,22 @@ body {
     opacity: 0.3; /* Ensures only the background is transparent */
     object-fit: cover;
     z-index: -1;
+}
+
+/* Rainbow Flash Effect */
+@keyframes rainbow {
+    0% { background: red; }
+    14% { background: orange; }
+    28% { background: yellow; }
+    42% { background: green; }
+    57% { background: blue; }
+    71% { background: indigo; }
+    85% { background: violet; }
+    100% { background: red; }
+}
+
+.rainbow-flash {
+    animation: rainbow 0.5s infinite;
 }
 
 /* Container adjustments */
@@ -73,12 +89,6 @@ button {
 
 button:hover {
     background-color: #ff3366;
-}
-
-/* Quiz page adjustments */
-#questions {
-    margin: 20px auto;
-    width: 60%;
 }
 
 /* Fix note text visibility */
