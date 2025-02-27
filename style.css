@@ -7,7 +7,15 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 .background-img {
@@ -19,34 +27,6 @@ body {
     opacity: 0.3;
     object-fit: cover;
     z-index: -1;
-}
-
-/* Center text on first page */
-#promise-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-}
-
-#container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-#image-container img {
-    max-width: 60%;
-    border-radius: 15px;
-}
-
-#question {
-    font-size: 48px;
-    transition: color 0.5s;
 }
 
 button {
@@ -63,33 +43,9 @@ button:hover {
     background-color: #ff3366;
 }
 
-.note {
-    font-size: 20px;
-    color: gray;
-}
-
-/* Countdown Timer */
-#countdown {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 10px;
-    color: #333;
-}
-
-/* Love message after Yes */
 #love-message {
-    font-size: 36px;
-    color: red;
-    margin-top: 20px;
+    font-size: 30px;
+    color: #ff3366;
+    font-weight: bold;
     display: none;
-}
-
-/* Rainbow Flash Effect */
-@keyframes rainbowFlash {
-    0% { background-color: red; }
-    20% { background-color: orange; }
-    40% { background-color: yellow; }
-    60% { background-color: green; }
-    80% { background-color: blue; }
-    100% { background-color: violet; }
 }
