@@ -1,70 +1,44 @@
-/* Global Styles */
 body {
     font-family: 'Dancing Script', cursive;
     text-align: center;
     margin: 0;
     background-color: #FADADD;
     overflow: hidden;
-    position: relative;
 }
 
-/* Hide elements dynamically */
 .hidden {
-    display: none !important;
+    display: none;
 }
 
-/* Background images */
-.background-img, #background-pic {
+.background-img {
     position: fixed;
-    width: 100vw;
-    height: 100vh;
     top: 0;
     left: 0;
-    opacity: 0.3; /* Ensures only the background is transparent */
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.3;
     object-fit: cover;
     z-index: -1;
 }
 
-/* Rainbow Flash Effect */
-@keyframes rainbow {
-    0% { background: red; }
-    14% { background: orange; }
-    28% { background: yellow; }
-    42% { background: green; }
-    57% { background: blue; }
-    71% { background: indigo; }
-    85% { background: violet; }
-    100% { background: red; }
-}
-
-.rainbow-flash {
-    animation: rainbow 0.5s infinite;
-}
-
-/* Centered layout */
 #container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    position: relative;
-    z-index: 1;
 }
 
-/* Cat image */
 #image-container img {
     max-width: 60%;
     border-radius: 15px;
 }
 
-/* Question text */
 #question {
     font-size: 48px;
-    margin-top: 20px;
+    transition: color 0.5s;
 }
 
-/* Buttons */
 button {
     padding: 12px 24px;
     font-size: 28px;
@@ -73,15 +47,14 @@ button {
     color: white;
     border: none;
     cursor: pointer;
-    transition: transform 0.2s ease;
 }
 
 button:hover {
     background-color: #ff3366;
 }
 
-/* Fix note text visibility */
 .note {
     font-size: 20px;
     color: gray;
 }
+
