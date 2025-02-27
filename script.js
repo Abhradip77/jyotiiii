@@ -22,35 +22,44 @@ document.addEventListener("DOMContentLoaded", function () {
         const catImg = document.getElementById("cat-img");
         const noButton = document.getElementById("no-button");
         const yesButton = document.getElementById("yes-button");
-
-        if (!backgroundPic) {
-            console.error("background-pic element not found");
-            return;
-        }
+        const countdownDiv = document.getElementById("countdown");
 
         if (option === "yes") {
             catImg.src = "cat-heart.gif";
-            backgroundPic.classList.remove("hidden");
-
-            // Add rainbow flashing effect
             document.body.style.animation = "rainbowFlash 1s infinite alternate";
-
-            // Hide buttons after yes
             document.getElementById("options").style.display = "none";
+            countdownDiv.classList.remove("hidden");
+            startCountdown();
         } else {
-            // Change text and increase "Yes" button size on multiple "No"
             let noTexts = ["Still no?", "I'll die", "Don't do this", "Are you sure?"];
             let currentNoText = noButton.innerText;
-
             let newTextIndex = noTexts.indexOf(currentNoText) + 1;
             if (newTextIndex >= noTexts.length) newTextIndex = 0;
-
             noButton.innerText = noTexts[newTextIndex];
 
-            // Increase the "Yes" button size
             let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
             yesButton.style.fontSize = `${currentSize + 5}px`;
         }
+    }
+
+    function startCountdown() {
+        const eventDate = new Date("2025-02-28T14:00:00+05:30").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerText = 
+                    `Time left until prom: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                document.getElementById("countdown").innerText = "It's prom time!";
+            }
+        }, 1000);
     }
 
     function checkAnswers() {
@@ -76,27 +85,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    const quizData = [
-        { question: "When did we go official?", options: ["19 sep", "18 sep", "15 sep", "16 sep"] },
-        { question: "Our fav spot?", options: ["si nonnas", "dailys", "high garden", "pop tates"] },
-        { question: "My birth sign?", options: ["capricon", "sagittarius", "scorpio", "cancer"] },
-        { question: "My favourite team?", options: ["united", "real madrid", "atletico madrid", "atletic club"] },
-        { question: "My fav top of yours?", options: ["black kissi one", "pink one", "yellow flower top", "white and pink kurta top"] }
-    ];
-
-    const quizContainer = document.getElementById("questions");
-    quizData.forEach((q, index) => {
-        let div = document.createElement("div");
-        div.classList.add("question");
-        div.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
-        q.options.forEach(opt => {
-            div.innerHTML += `<label><input type="radio" name="q${index}" value="${opt}" onchange="checkAnswers()"> ${opt}</label><br>`;
-        });
-        quizContainer.appendChild(div);
-    });
-
     window.startQuiz = startQuiz;
     window.showProposal = showProposal;
     window.selectOption = selectOption;
     window.checkAnswers = checkAnswers;
 });
+
