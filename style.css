@@ -1,5 +1,4 @@
-/* General Styles */
-body {body {
+body {
     font-family: 'Dancing Script', cursive;
     text-align: center;
     margin: 0;
@@ -36,14 +35,14 @@ body {body {
 }
 
 #question {
-    font-size: 48px;
+    font-size: 56px;
     transition: color 0.5s;
 }
 
 button {
-    padding: 12px 24px;
-    font-size: 28px;
-    border-radius: 10px;
+    padding: 14px 28px;
+    font-size: 32px;
+    border-radius: 12px;
     background-color: #FB607F;
     color: white;
     border: none;
@@ -55,8 +54,15 @@ button:hover {
 }
 
 .note {
-    font-size: 20px;
+    font-size: 22px;
     color: gray;
+}
+
+/* Countdown Timer */
+#countdown {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 /* Rainbow Flash Effect */
@@ -68,78 +74,3 @@ button:hover {
     80% { background-color: blue; }
     100% { background-color: violet; }
 }
-
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    margin: 0;
-    background-color: #FADADD;
-    overflow: hidden;
-}
-
-/* Background Image */
-.bg-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    opacity: 0.3;
-    object-fit: cover;
-    z-index: -1;
-}
-
-/* Container */
-#quiz-container {
-    width: 90%;
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-}
-
-/* Questions */
-.question {
-    margin: 20px 0;
-}
-
-/* Answer Buttons */
-button {
-    padding: 12px 24px;
-    font-size: 18px;
-    border-radius: 8px;
-    background-color: #FB607F;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin: 5px;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-button:hover {
-    background-color: #ff3366;
-    transform: scale(1.05);
-}
-
-/* Correct & Wrong Answer Colors */
-.correct {
-    background-color: green !important;
-}
-
-.wrong {
-    background-color: red !important;
-}
-
-/* Next Button */
-#next-button {
-    display: none;
-    margin-top: 20px;
-}
-
-/* Timer */
-#timer {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
