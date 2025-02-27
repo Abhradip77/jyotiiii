@@ -21,6 +21,16 @@ body {
     z-index: -1;
 }
 
+/* Center text on first page */
+#promise-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
 #container {
     display: flex;
     flex-direction: column;
@@ -56,6 +66,22 @@ button:hover {
 .note {
     font-size: 20px;
     color: gray;
+}
+
+/* Countdown Timer */
+#countdown {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Love message after Yes */
+#love-message {
+    font-size: 36px;
+    color: red;
+    margin-top: 20px;
+    display: none;
 }
 
 /* Rainbow Flash Effect */
