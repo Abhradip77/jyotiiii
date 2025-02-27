@@ -26,8 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (option === "yes") {
             catImg.src = "cat-heart.gif";
+            backgroundPic.classList.remove("hidden");
             document.body.style.animation = "rainbowFlash 1s infinite alternate";
             document.getElementById("options").style.display = "none";
+            
+            // Show countdown timer
             countdownDiv.classList.remove("hidden");
             startCountdown();
         } else {
@@ -36,30 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
             let newTextIndex = noTexts.indexOf(currentNoText) + 1;
             if (newTextIndex >= noTexts.length) newTextIndex = 0;
             noButton.innerText = noTexts[newTextIndex];
-
             let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
             yesButton.style.fontSize = `${currentSize + 5}px`;
         }
-    }
-
-    function startCountdown() {
-        const eventDate = new Date("2025-02-28T14:00:00+05:30").getTime();
-        setInterval(() => {
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-
-            if (distance > 0) {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById("countdown").innerText = 
-                    `Time left until prom: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-            } else {
-                document.getElementById("countdown").innerText = "It's prom time!";
-            }
-        }, 1000);
     }
 
     function checkAnswers() {
@@ -85,9 +67,30 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function startCountdown() {
+        const eventTime = new Date("Feb 28, 2025 14:00:00").getTime();
+        const timerElement = document.getElementById("timer");
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = eventTime - now;
+
+            if (distance <= 0) {
+                timerElement.innerText = "It's time for the prom!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            timerElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }, 1000);
+    }
+
     window.startQuiz = startQuiz;
     window.showProposal = showProposal;
     window.selectOption = selectOption;
     window.checkAnswers = checkAnswers;
 });
-
