@@ -3,22 +3,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const promisePage = document.getElementById("promise-page");
     const quizPage = document.getElementById("quiz-page");
     const proposalPage = document.getElementById("proposal-page");
+    const quizContainer = document.getElementById("questions");
+    const nextButton = document.getElementById("next-button");
 
     function playMusic() {
         music.play().catch(error => console.log("Music playback blocked:", error));
     }
 
     function startQuiz() {
-        // Ensure only quiz page is visible
-        promisePage.classList.add("hidden");
-        quizPage.classList.remove("hidden");
+        console.log("Promise button clicked - transitioning to Quiz Page.");
+        promisePage.style.display = "none";
+        quizPage.style.display = "flex";
         playMusic();
     }
 
     function showProposal() {
-        // Ensure only proposal page is visible
-        quizPage.classList.add("hidden");
-        proposalPage.classList.remove("hidden");
+        console.log("Quiz completed - transitioning to Proposal Page.");
+        quizPage.style.display = "none";
+        proposalPage.style.display = "flex";
         playMusic();
     }
 
@@ -28,21 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const noButton = document.getElementById("no-button");
         const yesButton = document.getElementById("yes-button");
 
-        if (!backgroundPic || !catImg || !noButton || !yesButton) {
-            console.error("One or more elements missing!");
-            return;
-        }
-
         if (option === "yes") {
             catImg.src = "cat-heart.gif";
-            backgroundPic.classList.remove("hidden");
             document.body.classList.add("rainbow-flash");
-            document.getElementById("options").style.display = "none"; // Hide buttons
+            document.getElementById("options").style.display = "none";
         } else {
             let noTexts = ["Still no?", "I'll die", "Don't do this", "Are you sure?"];
             let currentNoText = noButton.innerText;
             let newTextIndex = noTexts.indexOf(currentNoText) + 1;
-
             if (newTextIndex >= noTexts.length) newTextIndex = 0;
             noButton.innerText = noTexts[newTextIndex];
 
@@ -70,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (allCorrect) {
-            document.getElementById("next-button").classList.remove("hidden");
+            nextButton.style.display = "block";
         }
     }
 
@@ -82,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { question: "My fav top of yours?", options: ["black kissi one", "pink one", "yellow flower top", "white and pink kurta top"] }
     ];
 
-    const quizContainer = document.getElementById("questions");
     quizData.forEach((q, index) => {
         let div = document.createElement("div");
         div.classList.add("question");
@@ -93,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
         quizContainer.appendChild(div);
     });
 
-    // Expose functions globally
     window.startQuiz = startQuiz;
     window.showProposal = showProposal;
     window.selectOption = selectOption;
