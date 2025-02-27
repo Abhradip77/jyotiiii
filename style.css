@@ -53,13 +53,11 @@ button:hover {
     background-color: #ff3366;
 }
 
-.note {
-    font-size: 20px;
-    color: gray;
+.rainbow-flash {
+    animation: rainbow 1s infinite alternate;
 }
 
-/* Rainbow Flash Effect */
-@keyframes rainbowFlash {
+@keyframes rainbow {
     0% { background-color: red; }
     20% { background-color: orange; }
     40% { background-color: yellow; }
