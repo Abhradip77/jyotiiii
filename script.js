@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function startQuiz() {
+        console.log("Promise button clicked!"); // Debugging log
         document.getElementById("promise-page").classList.add("hidden");
         document.getElementById("quiz-page").classList.remove("hidden");
         playMusic();
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function selectOption(option) {
+        const backgroundPic = document.getElementById("background-pic");
         const catImg = document.getElementById("cat-img");
         const noButton = document.getElementById("no-button");
         const yesButton = document.getElementById("yes-button");
@@ -25,49 +27,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (option === "yes") {
             catImg.src = "cat-heart.gif";
+            backgroundPic.classList.remove("hidden");
+            loveMessage.classList.remove("hidden");
+
+            // Add rainbow flashing effect
             document.body.style.animation = "rainbowFlash 1s infinite alternate";
+
+            // Hide buttons after yes
             document.getElementById("options").style.display = "none";
-            loveMessage.style.display = "block";  // Show love message
         } else {
             let noTexts = ["Still no?", "I'll die", "Don't do this", "Are you sure?"];
             let currentNoText = noButton.innerText;
             let newTextIndex = noTexts.indexOf(currentNoText) + 1;
             if (newTextIndex >= noTexts.length) newTextIndex = 0;
-
             noButton.innerText = noTexts[newTextIndex];
-
-            let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
-            yesButton.style.fontSize = `${currentSize + 5}px`;
+            yesButton.style.fontSize = `${parseInt(window.getComputedStyle(yesButton).fontSize) + 5}px`;
         }
     }
 
-    function startCountdown() {
-        const targetDate = new Date("February 28, 2025 14:00:00").getTime();
+    function updateCountdown() {
         const countdownElement = document.getElementById("countdown");
-
-        function updateCountdown() {
+        const eventDate = new Date("February 28, 2025 14:00:00").getTime();
+        
+        function updateTimer() {
             const now = new Date().getTime();
-            const timeLeft = targetDate - now;
+            const timeLeft = eventDate - now;
 
             if (timeLeft <= 0) {
-                countdownElement.innerText = "It's time! 🎉";
+                countdownElement.innerHTML = "It's time!";
+                clearInterval(timer);
                 return;
             }
 
-            let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            countdownElement.innerHTML = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        updateTimer();
+        const timer = setInterval(updateTimer, 1000);
     }
 
-    startCountdown();
+    updateCountdown();
 
+    // Ensure the function is globally accessible
     window.startQuiz = startQuiz;
     window.showProposal = showProposal;
     window.selectOption = selectOption;
