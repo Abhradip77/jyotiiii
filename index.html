@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will You Be My Prom?</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,15 +14,14 @@
     </audio>
 
     <!-- First Page -->
-    <div id="promise-page" class="page">
+    <div id="promise-page">
         <img src="our-pic-2.jpg" class="background-img">
         <h1>This is gonna be fun, but promise me to stay grounded hehe</h1>
         <button onclick="startQuiz()">Promise</button>
-        <p id="countdown"></p> <!-- Countdown Timer -->
     </div>
 
     <!-- Quiz Page -->
-    <div id="quiz-page" class="page hidden">
+    <div id="quiz-page" class="hidden">
         <img src="our-pic-2.jpg" class="background-img">
         <h2>Answer these to proceed</h2>
         <div id="questions"></div>
@@ -31,8 +30,8 @@
     </div>
 
     <!-- Proposal Page -->
-    <div id="proposal-page" class="page hidden">
-        <img src="our-pic.jpg" class="background-img" id="background-pic">
+    <div id="proposal-page" class="hidden">
+        <img src="our-pic.jpg" class="background-img">
         <div id="container">
             <div id="image-container">
                 <img id="cat-img" src="cat.gif" alt="Cute Cat">
@@ -43,11 +42,12 @@
                     <button id="yes-button" onclick="selectOption('yes')">Yes</button>
                     <button id="no-button" onclick="selectOption('no')">No</button>
                 </div>
-                <p id="love-message" class="hidden">I love you Jyoti ❤️</p>
             </div>
+            <div id="countdown" class="hidden"></div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
