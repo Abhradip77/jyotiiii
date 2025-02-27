@@ -1,19 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
     const music = document.getElementById("background-music");
+    const promisePage = document.getElementById("promise-page");
+    const quizPage = document.getElementById("quiz-page");
+    const proposalPage = document.getElementById("proposal-page");
 
     function playMusic() {
         music.play().catch(error => console.log("Music playback blocked:", error));
     }
 
     function startQuiz() {
-        document.getElementById("promise-page").classList.add("hidden");
-        document.getElementById("quiz-page").classList.remove("hidden");
+        // Ensure only quiz page is visible
+        promisePage.classList.add("hidden");
+        quizPage.classList.remove("hidden");
         playMusic();
     }
 
     function showProposal() {
-        document.getElementById("quiz-page").classList.add("hidden");
-        document.getElementById("proposal-page").classList.remove("hidden");
+        // Ensure only proposal page is visible
+        quizPage.classList.add("hidden");
+        proposalPage.classList.remove("hidden");
         playMusic();
     }
 
@@ -23,31 +28,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const noButton = document.getElementById("no-button");
         const yesButton = document.getElementById("yes-button");
 
-        if (!backgroundPic) {
-            console.error("background-pic element not found");
+        if (!backgroundPic || !catImg || !noButton || !yesButton) {
+            console.error("One or more elements missing!");
             return;
         }
 
         if (option === "yes") {
             catImg.src = "cat-heart.gif";
             backgroundPic.classList.remove("hidden");
-
-            // Add rainbow flashing effect
             document.body.classList.add("rainbow-flash");
-
-            // Hide buttons after yes
-            document.getElementById("options").style.display = "none";
+            document.getElementById("options").style.display = "none"; // Hide buttons
         } else {
-            // Change text and increase "Yes" button size on multiple "No"
             let noTexts = ["Still no?", "I'll die", "Don't do this", "Are you sure?"];
             let currentNoText = noButton.innerText;
-
             let newTextIndex = noTexts.indexOf(currentNoText) + 1;
-            if (newTextIndex >= noTexts.length) newTextIndex = 0;
 
+            if (newTextIndex >= noTexts.length) newTextIndex = 0;
             noButton.innerText = noTexts[newTextIndex];
 
-            // Increase the "Yes" button size
             let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
             yesButton.style.fontSize = `${currentSize + 5}px`;
         }
@@ -56,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function checkAnswers() {
         const correctAnswers = ["19 sep", "pop tates", "scorpio", "real madrid", "white and pink kurta top"];
         let allCorrect = true;
-        
+
         document.querySelectorAll(".question").forEach((questionDiv, index) => {
             const selected = questionDiv.querySelector("input:checked");
             if (selected) {
@@ -95,6 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
         quizContainer.appendChild(div);
     });
 
+    // Expose functions globally
     window.startQuiz = startQuiz;
     window.showProposal = showProposal;
     window.selectOption = selectOption;
