@@ -1,79 +1,63 @@
+/* Global Styles */
 body {
     font-family: 'Dancing Script', cursive;
     text-align: center;
     margin: 0;
     background-color: #FADADD;
+    position: relative;
     overflow: hidden;
 }
 
-/* Hide elements by default */
+/* Hide elements dynamically */
 .hidden {
-    display: none;
+    display: none !important;
 }
 
-/* Background Image Fix */
+/* Background images */
 .background-img {
     position: fixed;
+    width: 100vw;
+    height: 100vh;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    opacity: 0.3;
     object-fit: cover;
     z-index: -1;
 }
 
-/* First Page & Quiz Page Fix */
-#promise-page, #quiz-page {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Proposal Page Fix */
-#proposal-page {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-}
-
-/* Background Image in Proposal Page (fixed) */
+/* Proposal page background fix */
 #background-pic {
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.3; /* Ensures only the background is transparent */
     object-fit: cover;
-    opacity: 0.3; /* Only background is transparent */
     z-index: -1;
 }
 
-/* Centering Container */
+/* Container adjustments */
 #container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
 }
 
-/* Image Styling */
+/* Cat image */
 #image-container img {
     max-width: 60%;
     border-radius: 15px;
 }
 
-/* Question Styling */
+/* Question text */
 #question {
     font-size: 48px;
+    margin-top: 20px;
 }
 
 /* Buttons */
@@ -91,7 +75,13 @@ button:hover {
     background-color: #ff3366;
 }
 
-/* Note */
+/* Quiz page adjustments */
+#questions {
+    margin: 20px auto;
+    width: 60%;
+}
+
+/* Fix note text visibility */
 .note {
     font-size: 20px;
     color: gray;
