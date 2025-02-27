@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         music.play().catch(error => console.log("Music playback blocked:", error));
     }
 
-    // Autoplay music after any user interaction
+    // Autoplay music after first user interaction
     document.body.addEventListener("click", function () {
         if (music.paused) {
             playMusic();
@@ -15,13 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function startQuiz() {
         document.getElementById("promise-page").classList.add("hidden");
         document.getElementById("quiz-page").classList.remove("hidden");
-        playMusic(); // Ensure music starts
+        playMusic();
     }
 
     function showProposal() {
         document.getElementById("quiz-page").classList.add("hidden");
         document.getElementById("proposal-page").classList.remove("hidden");
-        playMusic(); // Continue playing music
+        playMusic();
     }
 
     function selectOption(option) {
@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Quiz Data
     const quizData = [
         { question: "When did we go official?", options: ["19 sep", "18 sep", "15 sep", "16 sep"] },
         { question: "Our fav spot?", options: ["si nonnas", "dailys", "high garden", "pop tates"] },
