@@ -6,11 +6,11 @@
     <title>Will You Be My Prom?</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:,"> <!-- Fix for favicon 404 error -->
 </head>
 <body>
     <audio id="background-music" loop>
-        <source src="music.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
+        <source src="song.mp3" type="audio/mp3">
     </audio>
 
     <!-- First Page -->
@@ -31,10 +31,10 @@
 
     <!-- Proposal Page -->
     <div id="proposal-page" class="hidden">
+        <img src="our-pic.jpg" class="background-img">
         <div id="container">
             <div id="image-container">
                 <img id="cat-img" src="cat.gif" alt="Cute Cat">
-                <img id="background-pic" src="our-pic.jpg" class="hidden">
             </div>
             <div id="text-container">
                 <div id="question">Will you be my prom date? 💖</div>
@@ -49,3 +49,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
