@@ -1,56 +1,84 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let questions = document.querySelectorAll(".question");
-    let answeredCorrectly = 0;
+    const music = document.getElementById("background-music");
 
-    // Function to check answer in MCQ
-    window.checkAnswer = function (button, answer) {
-        let question = button.parentElement;
-        let correctAnswer = question.getAttribute("data-answer");
-
-        if (answer === correctAnswer) {
-            button.style.backgroundColor = "lightgreen";
-            button.style.color = "black";
-            answeredCorrectly++;
-        } else {
-            button.style.backgroundColor = "red";
-            button.style.color = "white";
-        }
-
-        if (answeredCorrectly === questions.length) {
-            document.getElementById("next-button").style.display = "block";
-        }
-    };
-
-    // Function to go to next page
-    window.nextPage = function (page) {
-        window.location.href = page;
-    };
-
-    // Function when selecting Yes or No in Proposal.html
-    window.selectOption = function (choice) {
-        let image = document.getElementById("main-image");
-        let questionText = document.getElementById("question");
-
-        if (choice === "yes") {
-            image.src = "cat-heart.gif";
-            questionText.innerText = "Yay! You made my day! 💖";
-            playMusic();
-        } else {
-            image.src = "our-pic.jpg";
-            questionText.innerText = "Oh no! You broke my heart 💔 But I still love you!";
-        }
-    };
-
-    // Function to play music
     function playMusic() {
-        let music = document.getElementById("background-music");
-        music.play().catch(error => console.log("Autoplay failed:", error));
+        music.play().catch(error => console.log("Music playback blocked:", error));
     }
 
-    // Function to handle promise button click
-    window.startPromise = function () {
-        let promiseButton = document.getElementById("promise-button");
-        promiseButton.innerText = "I Promise to Always Love You ❤️";
-        promiseButton.disabled = true; // Disable after clicking
-    };
+    function startQuiz() {
+        document.getElementById("promise-page").classList.add("hidden");
+        document.getElementById("quiz-page").classList.remove("hidden");
+        playMusic();
+    }
+
+    function showProposal() {
+        document.getElementById("quiz-page").classList.add("hidden");
+        document.getElementById("proposal-page").classList.remove("hidden");
+        playMusic();
+    }
+
+    function selectOption(option) {
+        const backgroundPic = document.getElementById("background-pic");
+        const catImg = document.getElementById("cat-img");
+        const noButton = document.getElementById("no-button");
+        const yesButton = document.getElementById("yes-button");
+        const countdown = document.getElementById("countdown");
+
+        if (option === "yes") {
+            catImg.src = "cat-heart.gif";
+
+            // Rainbow flashing effect
+            document.body.style.animation = "rainbowFlash 1s infinite alternate";
+
+            // Hide buttons
+            document.getElementById("options").style.display = "none";
+
+            // Show countdown
+            countdown.classList.remove("hidden");
+            startCountdown();
+        } else {
+            // Change "No" button text on multiple clicks
+            let noTexts = ["Still no?", "I'll die", "Don't do this", "Are you sure?"];
+            let currentNoText = noButton.innerText;
+
+            let newTextIndex = noTexts.indexOf(currentNoText) + 1;
+            if (newTextIndex >= noTexts.length) newTextIndex = 0;
+
+            noButton.innerText = noTexts[newTextIndex];
+
+            // Increase "Yes" button size
+            let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = `${currentSize + 5}px`;
+        }
+    }
+
+    function startCountdown() {
+        const eventTime = new Date("February 28, 2025 14:00:00 GMT+0530").getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const timeLeft = eventTime - now;
+
+            if (timeLeft <= 0) {
+                document.getElementById("countdown").innerHTML = "🎉 IT'S PROM TIME! 🎉";
+                document.body.style.animation = "none";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `Prom Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            setTimeout(updateTimer, 1000);
+        }
+
+        updateTimer();
+    }
+
+    window.startQuiz = startQuiz;
+    window.showProposal = showProposal;
+    window.selectOption = selectOption;
 });
