@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will You Be My Prom?</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@400;600&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,17 +16,21 @@
     <!-- First Page -->
     <div id="promise-page">
         <img src="our-pic-2.jpg" class="background-img">
-        <h1>This is gonna be fun, but promise me to stay grounded hehe</h1>
-        <button onclick="startQuiz()">Promise</button>
+        <div class="content">
+            <h1>This is gonna be fun, but promise me to stay grounded, hehe 💖</h1>
+            <button onclick="startQuiz()">I Promise</button>
+        </div>
     </div>
 
     <!-- Quiz Page -->
     <div id="quiz-page" class="hidden">
         <img src="our-pic-2.jpg" class="background-img">
-        <h2>Answer these to proceed</h2>
-        <div id="questions"></div>
-        <button id="next-button" class="hidden" onclick="showProposal()">Next</button>
-        <p class="note">It's hard to challenge you at times huh</p>
+        <div class="content">
+            <h2>Answer these to proceed 🌟</h2>
+            <div id="questions"></div>
+            <button id="next-button" class="hidden" onclick="showProposal()">Next</button>
+            <p class="note">It's hard to challenge you at times, huh? 😉</p>
+        </div>
     </div>
 
     <!-- Proposal Page -->
