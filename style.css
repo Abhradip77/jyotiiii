@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: 'Dancing Script', cursive;
     text-align: center;
@@ -6,11 +7,13 @@ body {
     overflow: hidden;
 }
 
+/* Hide Elements */
 .hidden {
     display: none;
 }
 
-.background-img {
+/* Background Image */
+.bg-image {
     position: fixed;
     top: 0;
     left: 0;
@@ -21,6 +24,7 @@ body {
     z-index: -1;
 }
 
+/* Container */
 #container {
     display: flex;
     flex-direction: column;
@@ -29,36 +33,57 @@ body {
     height: 100vh;
 }
 
-#question {
-    font-size: 48px;
+/* Question Section */
+#quiz-container {
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
 }
 
+/* Questions */
+.question {
+    margin: 20px 0;
+}
+
+/* Buttons */
 button {
     padding: 12px 24px;
-    font-size: 28px;
+    font-size: 20px;
     border-radius: 10px;
     background-color: #FB607F;
     color: white;
     border: none;
     cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
     background-color: #ff3366;
+    transform: scale(1.05);
 }
 
-#countdown {
-    font-size: 30px;
+/* Red for Wrong, Green for Correct */
+.correct {
+    background-color: green !important;
+}
+
+.wrong {
+    background-color: red !important;
+}
+
+/* Next Button */
+#next-button {
+    display: none;
     margin-top: 20px;
-    color: #ff3366;
 }
 
-@keyframes rainbowFlash {
-    0% { background-color: red; }
-    20% { background-color: orange; }
-    40% { background-color: yellow; }
-    60% { background-color: green; }
-    80% { background-color: blue; }
-    100% { background-color: violet; }
+/* Timer */
+#timer {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
 }
-
